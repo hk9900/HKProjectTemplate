@@ -9,15 +9,17 @@
 /* Begin PBXBuildFile section */
 		A1234567890123456789012A /* HKProjectTemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012B /* HKProjectTemplateApp.swift */; };
 		A1234567890123456789012C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012D /* ContentView.swift */; };
-		A1234567890123456789012E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012F /* Assets.xcassets */; };
+		F8C96F0A2E808E7E005B8378 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C96F052E808E7E005B8378 /* Preview Assets.xcassets */; };
+		F8C96F0B2E808E7E005B8378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C96F072E808E7E005B8378 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		A1234567890123456789012B /* HKProjectTemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKProjectTemplateApp.swift; sourceTree = "<group>"; };
 		A1234567890123456789012D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		A1234567890123456789012F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A1234567890123456789012G /* HKProjectTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HKProjectTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1234567890123456789013H /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		F8C96F052E808E7E005B8378 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		F8C96F072E808E7E005B8378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		F8C96F082E808E7E005B8378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,8 +38,8 @@
 			children = (
 				A1234567890123456789012B /* HKProjectTemplateApp.swift */,
 				A1234567890123456789012D /* ContentView.swift */,
-				A1234567890123456789012F /* Assets.xcassets */,
-				A1234567890123456789013H /* Info.plist */,
+				F8C96F062E808E7E005B8378 /* Preview Content */,
+				F8C96F092E808E7E005B8378 /* SupportingFiles */,
 			);
 			path = HKProjectTemplate;
 			sourceTree = "<group>";
@@ -56,6 +58,23 @@
 				A1234567890123456789012G /* HKProjectTemplate.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		F8C96F062E808E7E005B8378 /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F052E808E7E005B8378 /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		F8C96F092E808E7E005B8378 /* SupportingFiles */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F072E808E7E005B8378 /* Assets.xcassets */,
+				F8C96F082E808E7E005B8378 /* Info.plist */,
+			);
+			path = SupportingFiles;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -116,7 +135,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A1234567890123456789012E /* Assets.xcassets in Resources */,
+				F8C96F0A2E808E7E005B8378 /* Preview Assets.xcassets in Resources */,
+				F8C96F0B2E808E7E005B8378 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,7 +285,7 @@
 				DEVELOPMENT_TEAM = 849SA7G284;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HKProjectTemplate/Info.plist;
+				INFOPLIST_FILE = HKProjectTemplate/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,7 +319,7 @@
 				DEVELOPMENT_TEAM = 849SA7G284;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = HKProjectTemplate/Info.plist;
+				INFOPLIST_FILE = HKProjectTemplate/SupportingFiles/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
