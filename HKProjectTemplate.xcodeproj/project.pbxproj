@@ -7,16 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A1234567890123456789012A /* HKProjectTemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012B /* HKProjectTemplateApp.swift */; };
 		A1234567890123456789012C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012D /* ContentView.swift */; };
+		A1234567890123456789012E /* HKProjectTemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012F /* HKProjectTemplateApp.swift */; };
+		A1234567890123456789013A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013B /* AppDelegate.swift */; };
+		A1234567890123456789013C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013D /* AppEnvironment.swift */; };
 		F8C96F0A2E808E7E005B8378 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C96F052E808E7E005B8378 /* Preview Assets.xcassets */; };
 		F8C96F0B2E808E7E005B8378 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F8C96F072E808E7E005B8378 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		A1234567890123456789012B /* HKProjectTemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKProjectTemplateApp.swift; sourceTree = "<group>"; };
 		A1234567890123456789012D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		A1234567890123456789012F /* HKProjectTemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKProjectTemplateApp.swift; sourceTree = "<group>"; };
 		A1234567890123456789012G /* HKProjectTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HKProjectTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		A1234567890123456789013B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		A1234567890123456789013D /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F8C96F052E808E7E005B8378 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = text; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		F8C96F072E808E7E005B8378 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		F8C96F082E808E7E005B8378 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -36,8 +40,12 @@
 		A1234567890123456789013J /* HKProjectTemplate */ = {
 			isa = PBXGroup;
 			children = (
-				A1234567890123456789012B /* HKProjectTemplateApp.swift */,
-				A1234567890123456789012D /* ContentView.swift */,
+				A1234567890123456789013E /* App */,
+				F8C96F132E809373005B8378 /* Components */,
+				F8C96F1C2E809373005B8378 /* Constants */,
+				F8C96F252E809373005B8378 /* Core */,
+				F8C96F2C2E809373005B8378 /* Features */,
+				F8C96F312E809373005B8378 /* Resources */,
 				F8C96F062E808E7E005B8378 /* Preview Content */,
 				F8C96F092E808E7E005B8378 /* SupportingFiles */,
 			);
@@ -48,6 +56,7 @@
 			isa = PBXGroup;
 			children = (
 				A1234567890123456789013J /* HKProjectTemplate */,
+				F8C96F482E8096AF005B8378 /* Tests */,
 				A1234567890123456789013L /* Products */,
 			);
 			sourceTree = "<group>";
@@ -58,6 +67,16 @@
 				A1234567890123456789012G /* HKProjectTemplate.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		A1234567890123456789013E /* App */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456789012F /* HKProjectTemplateApp.swift */,
+				A1234567890123456789013B /* AppDelegate.swift */,
+				A1234567890123456789013D /* AppEnvironment.swift */,
+			);
+			path = App;
 			sourceTree = "<group>";
 		};
 		F8C96F062E808E7E005B8378 /* Preview Content */ = {
@@ -75,6 +94,220 @@
 				F8C96F082E808E7E005B8378 /* Info.plist */,
 			);
 			path = SupportingFiles;
+			sourceTree = "<group>";
+		};
+		F8C96F0E2E809373005B8378 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F0D2E809373005B8378 /* .gitkeep */,
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		F8C96F102E809373005B8378 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F0F2E809373005B8378 /* .gitkeep */,
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		F8C96F122E809373005B8378 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F112E809373005B8378 /* .gitkeep */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8C96F132E809373005B8378 /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F0E2E809373005B8378 /* Styles */,
+				F8C96F102E809373005B8378 /* ViewModifiers */,
+				F8C96F122E809373005B8378 /* Views */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		F8C96F152E809373005B8378 /* Colors */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F142E809373005B8378 /* .gitkeep */,
+			);
+			path = Colors;
+			sourceTree = "<group>";
+		};
+		F8C96F172E809373005B8378 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F162E809373005B8378 /* .gitkeep */,
+			);
+			path = Fonts;
+			sourceTree = "<group>";
+		};
+		F8C96F192E809373005B8378 /* Layout */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F182E809373005B8378 /* .gitkeep */,
+			);
+			path = Layout;
+			sourceTree = "<group>";
+		};
+		F8C96F1B2E809373005B8378 /* Strings */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F1A2E809373005B8378 /* .gitkeep */,
+			);
+			path = Strings;
+			sourceTree = "<group>";
+		};
+		F8C96F1C2E809373005B8378 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F152E809373005B8378 /* Colors */,
+				F8C96F172E809373005B8378 /* Fonts */,
+				F8C96F192E809373005B8378 /* Layout */,
+				F8C96F1B2E809373005B8378 /* Strings */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
+		F8C96F1E2E809373005B8378 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F1D2E809373005B8378 /* .gitkeep */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		F8C96F202E809373005B8378 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F1F2E809373005B8378 /* .gitkeep */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		F8C96F222E809373005B8378 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F212E809373005B8378 /* .gitkeep */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		F8C96F242E809373005B8378 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F232E809373005B8378 /* .gitkeep */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
+		F8C96F252E809373005B8378 /* Core */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F1E2E809373005B8378 /* Extensions */,
+				F8C96F202E809373005B8378 /* Firebase */,
+				F8C96F222E809373005B8378 /* Models */,
+				F8C96F242E809373005B8378 /* Services */,
+			);
+			path = Core;
+			sourceTree = "<group>";
+		};
+		F8C96F272E809373005B8378 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F262E809373005B8378 /* .gitkeep */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		F8C96F292E809373005B8378 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F282E809373005B8378 /* .gitkeep */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		F8C96F2B2E809373005B8378 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F2A2E809373005B8378 /* .gitkeep */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		F8C96F2C2E809373005B8378 /* Features */ = {
+			isa = PBXGroup;
+			children = (
+				A1234567890123456789012D /* ContentView.swift */,
+				F8C96F272E809373005B8378 /* Authentication */,
+				F8C96F292E809373005B8378 /* Profile */,
+				F8C96F2B2E809373005B8378 /* Settings */,
+			);
+			path = Features;
+			sourceTree = "<group>";
+		};
+		F8C96F2E2E809373005B8378 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F2D2E809373005B8378 /* .gitkeep */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		F8C96F302E809373005B8378 /* Localization */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F2F2E809373005B8378 /* .gitkeep */,
+			);
+			path = Localization;
+			sourceTree = "<group>";
+		};
+		F8C96F312E809373005B8378 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F2E2E809373005B8378 /* Config */,
+				F8C96F302E809373005B8378 /* Localization */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		F8C96F432E8096AF005B8378 /* TestUtilities */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F422E8096AF005B8378 /* TestUtilities.swift */,
+			);
+			path = TestUtilities;
+			sourceTree = "<group>";
+		};
+		F8C96F452E8096AF005B8378 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F442E8096AF005B8378 /* UITests.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		F8C96F472E8096AF005B8378 /* Unit */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F462E8096AF005B8378 /* UnitTests.swift */,
+			);
+			path = Unit;
+			sourceTree = "<group>";
+		};
+		F8C96F482E8096AF005B8378 /* Tests */ = {
+			isa = PBXGroup;
+			children = (
+				F8C96F432E8096AF005B8378 /* TestUtilities */,
+				F8C96F452E8096AF005B8378 /* UI */,
+				F8C96F472E8096AF005B8378 /* Unit */,
+			);
+			path = Tests;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -147,8 +380,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A1234567890123456789012E /* HKProjectTemplateApp.swift in Sources */,
+				A1234567890123456789013A /* AppDelegate.swift in Sources */,
+				A1234567890123456789013C /* AppEnvironment.swift in Sources */,
 				A1234567890123456789012C /* ContentView.swift in Sources */,
-				A1234567890123456789012A /* HKProjectTemplateApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
