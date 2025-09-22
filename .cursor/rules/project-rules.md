@@ -176,6 +176,13 @@ This project uses an ultra-strict SwiftLint configuration that enforces the high
 - **unused_closure_parameter**: Remove unused closure parameters (severity: error)
 - **valid_ibinspectable**: Use valid IBInspectable properties (severity: error)
 
+#### **Tuple and Nesting Rules**
+- **large_tuple**: Maximum tuple size limits (warning: 1, error: 2)
+- **nesting**: Maximum nesting levels (type_level: warning: 1, error: 2)
+
+#### **Return Arrow and Whitespace Rules**
+- **return_arrow_whitespace**: Proper whitespace around return arrows (severity: error)
+
 #### **SwiftUI Advanced Rules**
 - **multiple_closures_with_trailing_closure**: Avoid multiple trailing closures (severity: error)
 
@@ -185,6 +192,29 @@ This project uses an ultra-strict SwiftLint configuration that enforces the high
 - **protocol_naming**: Protocols should end with 'Protocol' or 'Type'
 - **enum_case_naming**: Enum cases should be camelCase
 - **final_classes**: All classes should be marked as final unless designed for inheritance
+- **explicit_self_in_closure**: Use explicit self in closures for clarity
+- **mark_comments_required**: Use MARK comments to organize code sections
+- **public_api_documentation**: Public APIs must be documented with /// comments
+- **explicit_return_types**: Use explicit return types instead of Void
+- **guard_over_if_let**: Use guard let instead of if let for early returns
+- **explicit_access_control**: All declarations must have explicit access control (except SwiftUI views and body properties)
+
+#### **SwiftUI Custom Rules**
+- **swiftui_stateobject_over_observed**: Use @StateObject for owned ObservableObjects, @ObservedObject for external ones
+- **swiftui_mainactor_viewmodels**: ViewModels must be marked with @MainActor
+- **swiftui_view_structure**: SwiftUI Views must have proper structure with body property
+- **swiftui_viewbuilder**: Complex computed properties returning some View must use @ViewBuilder
+- **swiftui_modifier_order**: SwiftUI modifiers must be in logical order (layout → appearance → behavior)
+- **swiftui_accessibility**: All interactive SwiftUI elements must have accessibility identifiers
+- **swiftui_navigation**: NavigationLink must be properly configured with navigation modifiers
+- **swiftui_preview**: Use #Preview instead of #PreviewProvider for SwiftUI previews
+- **swiftui_state_management**: @State variables must be private
+- **swiftui_environment**: @Environment variables must be private
+- **swiftui_animation**: Use explicit animation curves instead of default
+- **swiftui_performance**: ForEach must have explicit id parameter for performance
+- **swiftui_error_handling**: Use proper error handling with alert modifiers
+- **swiftui_view_naming**: SwiftUI Views must end with 'View'
+- **swiftui_viewmodel_naming**: SwiftUI ViewModels must end with 'ViewModel'
 
 ### Prohibited Patterns
 - ❌ Hardcoded values without constants
