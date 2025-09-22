@@ -28,6 +28,220 @@ Keep output compilable and changes minimal; list all changed files.
 - SwiftUI UI; MVVM + use cases + services
 - Firebase backend via SPM (Auth, Firestore, FirestoreSwift, Storage; optional Analytics/Crashlytics)
 - No CocoaPods; SPM only
+- **SwiftLint**: Ultra-strict configuration with comprehensive code quality enforcement
+
+## SwiftLint Code Quality Standards
+
+### Ultra-Strict Configuration
+This project uses an ultra-strict SwiftLint configuration that enforces the highest code quality standards. All violations are treated as errors and must be fixed before code can be committed.
+
+### Complete SwiftLint Rules Reference
+
+#### **Core Length & Complexity Rules**
+- **line_length**: Maximum 60 characters (warning), 80 characters (error)
+- **function_body_length**: Maximum 5 lines (warning), 10 lines (error)
+- **type_body_length**: Maximum 50 lines (warning), 100 lines (error)
+- **file_length**: Maximum 150 lines (warning), 300 lines (error)
+- **cyclomatic_complexity**: Maximum 3 (warning), 5 (error)
+- **closure_body_length**: Maximum 5 lines (warning), 10 lines (error)
+- **function_parameter_count**: Maximum 1 parameter (warning), 2 parameters (error)
+
+#### **Naming Conventions**
+- **type_name**: 5-25 characters, descriptive and clear
+- **identifier_name**: 4-25 characters, descriptive and meaningful (excludes: id, url, api, ui)
+- **protocol_naming**: Must end with 'Protocol' or 'Type'
+- **enum_case_naming**: Must be camelCase
+
+#### **Access Control & Class Design**
+- **explicit_access_control**: ALL declarations must have explicit access control
+- **final_classes**: All classes must be marked `final` unless designed for inheritance
+- **extension_access_modifier**: Extensions must have explicit access control
+- **lower_acl_than_parent**: Access control must not be lower than parent
+
+#### **SwiftUI Specific Rules**
+- **swiftui_stateobject_over_observed**: Use `@StateObject` for owned objects, `@ObservedObject` for external ones
+- **swiftui_mainactor_viewmodels**: All ViewModels must be marked with `@MainActor`
+- **swiftui_view_structure**: Proper SwiftUI View structure with body property
+- **swiftui_viewbuilder**: Complex computed properties returning `some View` must use `@ViewBuilder`
+- **swiftui_modifier_order**: SwiftUI modifiers must be in logical order (layout → appearance → behavior)
+- **swiftui_accessibility**: All interactive elements must have accessibility identifiers
+- **swiftui_navigation**: NavigationLink must be properly configured with navigation modifiers
+- **swiftui_preview**: Use `#Preview` instead of `#PreviewProvider`
+- **swiftui_state_management**: `@State` variables must be private
+- **swiftui_environment**: `@Environment` variables must be private
+- **swiftui_animation**: Use explicit animation curves instead of default
+- **swiftui_performance**: ForEach must have explicit `id` parameter for performance
+- **swiftui_error_handling**: Use proper error handling with alert modifiers
+- **swiftui_view_naming**: SwiftUI Views must end with 'View'
+- **swiftui_viewmodel_naming**: SwiftUI ViewModels must end with 'ViewModel'
+
+#### **Code Organization & Documentation**
+- **mark_comments_required**: Use `// MARK: -` to organize code sections
+- **public_api_documentation**: All public APIs must be documented with `///` comments
+- **file_header**: Files must have proper header structure
+- **single_responsibility**: Classes should have single responsibility
+
+#### **Error Handling & Safety**
+- **force_unwrapping**: Avoid `!` operator (severity: error)
+- **force_try**: Avoid `try!` operator (severity: error)
+- **force_cast**: Avoid `as!` operator (severity: error)
+- **implicit_return**: Prefer implicit returns in closures, functions and getters (severity: error)
+- **fatal_error_message**: Fatal errors must have descriptive messages
+
+#### **Whitespace & Formatting**
+- **trailing_whitespace**: Lines should not have trailing whitespace (severity: error)
+- **vertical_whitespace**: Limit vertical whitespace to maximum 0 empty lines (severity: error)
+- **vertical_whitespace_closing_braces**: No vertical whitespace before closing braces
+- **vertical_whitespace_opening_braces**: No vertical whitespace after opening braces
+- **closure_spacing**: Proper spacing in closures (severity: error)
+- **closure_end_indentation**: Proper indentation for closure endings (severity: error)
+
+#### **String & Collection Handling**
+- **empty_count**: Avoid empty count checks (severity: error)
+- **empty_string**: Avoid empty string checks (severity: error)
+- **empty_collection_literal**: Use `[]` instead of `Array()` (severity: error)
+- **contains_over_filter_count**: Use `contains` instead of `filter.count > 0`
+- **contains_over_filter_is_empty**: Use `contains` instead of `filter.isEmpty`
+- **contains_over_first_not_nil**: Use `contains` instead of `first != nil`
+- **contains_over_range_nil_comparison**: Use `contains` instead of range nil comparison
+
+#### **Function & Method Design**
+- **explicit_return_types**: Use explicit return types instead of `Void`
+- **guard_over_if_let**: Use `guard let` instead of `if let` for early returns
+- **function_default_parameter_at_end**: Locate parameters with defaults toward the end
+- **joined_default_parameter**: Use `joined(separator:)` instead of `joined()`
+- **redundant_type_annotation**: Remove redundant type annotations
+- **explicit_init**: Use explicit `init()` calls
+
+#### **Control Flow & Logic**
+- **fallthrough**: Avoid fallthrough in switch statements
+- **switch_case_on_newline**: Switch cases must be on new lines
+- **switch_case_alignment**: Switch cases must be properly aligned (severity: error)
+- **toggle_bool**: Use `toggle()` instead of `bool = !bool` (severity: error)
+- **yoda_condition**: Avoid Yoda conditions (constant == variable)
+
+#### **Memory Management & Performance**
+- **weak_delegate**: Use weak references for delegates (severity: error)
+- **strong_iboutlet**: Use strong references for IBOutlets
+- **explicit_self**: Use explicit `self` for method calls
+- **explicit_self_in_closure**: Use explicit `self` in closures for clarity
+- **static_operator**: Use static methods for operators
+- **prefer_self_type_over_type_of_self**: Use `Self` instead of `type(of: self)`
+
+#### **Import & Dependencies**
+- **sorted_imports**: Imports must be sorted alphabetically (severity: error)
+- **unused_import**: Remove unused imports (severity: error)
+- **unused_declaration**: Remove unused declarations (severity: error)
+
+#### **Testing & Quality Assurance**
+- **xct_specific_matcher**: Use XCTest specific matchers (severity: error)
+- **quick_discouraged_call**: Avoid discouraged Quick testing calls
+- **quick_discouraged_focused_test**: Avoid focused tests in Quick
+- **quick_discouraged_pending_test**: Avoid pending tests in Quick
+- **single_test_class**: Use single test class per file
+- **nimble_operator**: Use Nimble operators for testing
+
+#### **Advanced Swift Features**
+- **array_init**: Use `Array()` instead of `[]`
+- **attributes**: Attributes should be on their own lines
+- **collection_alignment**: Collections should be properly aligned
+- **discouraged_object_literal**: Avoid object literals
+- **object_literal**: Use object literals consistently
+- **enum_case_associated_values_count**: Limit associated values in enum cases
+- **first_where**: Use `first(where:)` instead of `filter.first`
+- **last_where**: Use `last(where:)` instead of `filter.last`
+- **identical_operands**: Avoid identical operands in comparisons
+- **legacy_random**: Use modern random APIs
+- **literal_expression_end_indentation**: Proper indentation for literal expressions
+- **modifier_order**: Modifiers must be in correct order
+- **nslocalizedstring_key**: Use proper NSLocalizedString keys
+- **number_separator**: Use number separators for readability
+- **operator_usage_whitespace**: Proper whitespace around operators (severity: error)
+- **overridden_super_call**: Call super in overridden methods
+- **override_in_extension**: Avoid override in extensions
+- **pattern_matching_keywords**: Use pattern matching keywords
+- **prefer_zero_over_explicit_init**: Use `0` instead of `Int()`
+- **prefixed_toplevel_constant**: Use prefixed constants at top level
+- **prohibited_interface_builder**: Avoid Interface Builder usage
+- **prohibited_super_call**: Avoid prohibited super calls
+- **reduce_into**: Use `reduce(into:)` for better performance
+- **redundant_nil_coalescing**: Remove redundant nil coalescing
+- **required_enum_case**: All enum cases must be handled
+- **sorted_first_last**: Use sorted first/last methods
+- **statement_position**: Statements must be in correct position (severity: error)
+- **unavailable_function**: Mark unavailable functions properly
+- **unneeded_parentheses_in_closure_argument**: Remove unneeded parentheses
+- **untyped_error_in_catch**: Use typed errors in catch blocks
+- **vertical_parameter_alignment_on_call**: Align parameters vertically (severity: error)
+- **unused_closure_parameter**: Remove unused closure parameters (severity: error)
+- **valid_ibinspectable**: Use valid IBInspectable properties (severity: error)
+
+#### **SwiftUI Advanced Rules**
+- **multiple_closures_with_trailing_closure**: Avoid multiple trailing closures (severity: error)
+
+#### **Custom Project Rules**
+- **explicit_self_required**: Use explicit `self` for method calls
+- **single_responsibility**: Classes should have single responsibility
+- **protocol_naming**: Protocols should end with 'Protocol' or 'Type'
+- **enum_case_naming**: Enum cases should be camelCase
+- **final_classes**: All classes should be marked as final unless designed for inheritance
+
+### Prohibited Patterns
+- ❌ Hardcoded values without constants
+- ❌ Force unwrapping (`!`) or force casting (`as!`)
+- ❌ Implicit access control (missing `private`, `public`, etc.)
+- ❌ Long functions or closures (>10 lines)
+- ❌ Long lines (>80 characters)
+- ❌ Missing MARK comments for code organization
+- ❌ Undocumented public APIs
+- ❌ Non-descriptive variable names (<4 characters)
+- ❌ Missing accessibility identifiers
+- ❌ Improper SwiftUI modifier order
+- ❌ Missing `@MainActor` on ViewModels
+- ❌ Using `@ObservedObject` for owned objects
+- ❌ Trailing whitespace
+- ❌ Vertical whitespace (empty lines)
+- ❌ Empty count/string checks
+- ❌ Unused imports or declarations
+- ❌ Unsorted imports
+- ❌ Missing explicit return types
+- ❌ Using `if let` instead of `guard let`
+- ❌ Missing explicit `self` in closures
+- ❌ Non-final classes without inheritance intent
+- ❌ Improper switch case formatting
+- ❌ Yoda conditions
+- ❌ Multiple trailing closures
+- ❌ Missing accessibility identifiers on interactive elements
+
+### Required Patterns
+- ✅ Explicit access control on all declarations
+- ✅ `final` classes unless designed for inheritance
+- ✅ `private` state variables in SwiftUI
+- ✅ `@StateObject` for owned ObservableObjects
+- ✅ `@MainActor` for all ViewModels
+- ✅ MARK comments for code organization
+- ✅ Documentation for public APIs
+- ✅ Guard statements for early returns
+- ✅ Descriptive naming (4+ characters)
+- ✅ Accessibility identifiers on interactive elements
+- ✅ Proper SwiftUI modifier order
+- ✅ Explicit animation curves
+- ✅ ForEach with explicit `id` parameter
+- ✅ Sorted imports
+- ✅ Explicit return types
+- ✅ Proper whitespace formatting
+- ✅ Explicit `self` in closures
+- ✅ Proper switch case formatting
+- ✅ Modern Swift APIs
+- ✅ Proper error handling
+- ✅ Memory-safe patterns
+
+### Code Quality Enforcement
+- **Build Integration**: SwiftLint runs as part of the Xcode build process
+- **Zero Tolerance**: All violations must be fixed before code can be committed
+- **Continuous Monitoring**: SwiftLint violations prevent successful builds
+- **Team Standards**: All team members must follow the same quality standards
+- **Code Review**: All code must pass SwiftLint before review
 
 ## SOLID and Best Practices
 
