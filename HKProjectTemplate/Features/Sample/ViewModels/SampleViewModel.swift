@@ -6,30 +6,41 @@ import Combine
 final class SampleViewModel: ObservableObject {
     
     // MARK: - Published Properties
-    @Published var title: String = "Sample Feature"
-    @Published var message: String = "Welcome to the sample feature!"
-    @Published var isLoading: Bool = false
     @Published var items: [SampleItem] = []
+    @Published var isLoading: Bool = false
+    @Published var errorMessage: String?
     
     // MARK: - Private Properties
     private var cancellables = Set<AnyCancellable>()
+    private let dataService: DataServiceProtocol
     
     // MARK: - Initialization
-    init() {
-        setupInitialData()
+    init(dataService: DataServiceProtocol = MockDataService()) {
+        self.dataService = dataService
+        fetchItems()
     }
     
     // MARK: - Public Methods
     
-    /// Load sample data
-    func loadData() {
+    /// Fetch sample items
+    func fetchItems() {
         isLoading = true
+        errorMessage = nil
         
-        // Simulate network call
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { [weak self] in
-            self?.items = SampleItem.sampleData
-            self?.isLoading = false
-        }
+        dataService.fetchSampleItems()
+            .receive(on: DispatchQueue.main)
+            .sink(
+                receiveCompletion: { [weak self] completion in
+                    self?.isLoading = false
+                    if case .failure(let error) = completion {
+                        self?.errorMessage = error.localizedDescription
+                    }
+                },
+                receiveValue: { [weak self] items in
+                    self?.items = items
+                }
+            )
+            .store(in: &cancellables)
     }
     
     /// Add new item
@@ -42,25 +53,44 @@ final class SampleViewModel: ObservableObject {
         guard index < items.count else { return }
         items.remove(at: index)
     }
-    
-    // MARK: - Private Methods
-    
-    private func setupInitialData() {
-        // Initialize with empty data
-        items = []
+}
+
+// MARK: - Data Service Protocol
+
+protocol DataServiceProtocol {
+    func fetchSampleItems() -> AnyPublisher<[SampleItem], Error>
+}
+
+// MARK: - Mock Data Service
+
+class MockDataService: DataServiceProtocol {
+    func fetchSampleItems() -> AnyPublisher<[SampleItem], Error> {
+        Future { promise in
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                promise(.success(SampleItem.sampleData))
+            }
+        }
+        .eraseToAnyPublisher()
     }
 }
 
 // MARK: - Sample Data Model
 struct SampleItem: Identifiable, Codable {
-    let id = UUID()
-    let title: String
+    let id: UUID
+    let name: String
     let description: String
-    let timestamp: Date
+    let value: Int
+    
+    init(id: UUID = UUID(), name: String, description: String, value: Int) {
+        self.id = id
+        self.name = name
+        self.description = description
+        self.value = value
+    }
     
     static let sampleData: [SampleItem] = [
-        SampleItem(title: "First Item", description: "This is the first sample item", timestamp: Date()),
-        SampleItem(title: "Second Item", description: "This is the second sample item", timestamp: Date()),
-        SampleItem(title: "Third Item", description: "This is the third sample item", timestamp: Date())
+        SampleItem(name: "Sample Item 1", description: "This is the first sample item.", value: 10),
+        SampleItem(name: "Sample Item 2", description: "This is the second sample item.", value: 20),
+        SampleItem(name: "Sample Item 3", description: "This is the third sample item.", value: 30)
     ]
 }

@@ -85,8 +85,8 @@ HKProjectTemplate/
     Assets.xcassets
 Scripts/
 Tests/
-  Unit/
-  UI/
+  UnitTests/
+  UITests/
   TestUtilities/
 .cursor/
 ```
@@ -131,11 +131,15 @@ Do not surface Firebase error types directly to UI.
 
 ## Testing
 
-- Unit tests for ViewModels, UseCases, and mappers
+- **Unit Tests**: Test ViewModels, UseCases, Services, and business logic in `Tests/UnitTests/`
+- **UI Tests**: Test critical user flows and UI interactions in `Tests/UITests/`
+- **Test Utilities**: Reusable test helpers, mocks, and test data in `Tests/TestUtilities/`
 - Use protocol-based mocks/fakes; no real network/disk by default
 - Integration tests may use Firebase Emulator Suite; guard with USE_FIREBASE_EMULATORS=1
 - UI tests for critical flows; use accessibility identifiers
 - Given–When–Then naming; one behavior per test; deterministic
+- All test files must be added to appropriate Xcode test targets
+- Use dependency injection for testable code with mock services
 
 ## Security, Privacy, Permissions
 
@@ -273,8 +277,8 @@ extension CGFloat? {
 - **Config**: Place configuration files (plists, JSON) in `Resources/Config/`
 
 ### Testing
-- **Unit Tests**: Place unit tests in `Tests/Unit/`
-- **UI Tests**: Place UI tests in `Tests/UI/`
+- **Unit Tests**: Place unit tests in `Tests/UnitTests/`
+- **UI Tests**: Place UI tests in `Tests/UITests/`
 - **Test Utilities**: Place test helpers and mocks in `Tests/TestUtilities/`
 
 ## File Naming Conventions
@@ -376,6 +380,13 @@ ViewModels receive dependencies in initializers; prefer protocol-typed propertie
 - Implement integration tests for critical user flows
 - Use XCTestExpectation for async operations
 - Mock network calls and database operations
+- **Test Structure**: 
+  - `Tests/UnitTests/` - Unit tests for ViewModels, Services, and business logic
+  - `Tests/UITests/` - UI tests for user flows and interactions
+  - `Tests/TestUtilities/` - Shared test helpers, mocks, and test data
+- **Test Targets**: All test files must be added to appropriate Xcode test targets
+- **Mock Services**: Use protocol-based mocks for dependency injection
+- **Test Data**: Use `TestDataFactory` for consistent test data creation
 
 ## Code Review Guidelines
 

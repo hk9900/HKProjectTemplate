@@ -9,131 +9,62 @@ struct SampleView: View {
     // MARK: - Body
     var body: some View {
         NavigationView {
-            VStack(spacing: 20) {
-                headerView
-                
-                if viewModel.isLoading {
-                    loadingView
-                } else {
-                    contentView
-                }
-                
-                Spacer()
-            }
-            .padding()
-            .navigationTitle(viewModel.title)
-            .navigationBarTitleDisplayMode(.large)
-            .onAppear {
-                viewModel.loadData()
-            }
-        }
-    }
-    
-    // MARK: - Subviews
-    
-    private var headerView: some View {
-        VStack(spacing: 8) {
-            Text(viewModel.message)
-                .font(.headline)
-                .foregroundColor(.primary)
-            
-            Text("This demonstrates the template structure")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-        }
-        .multilineTextAlignment(.center)
-    }
-    
-    private var loadingView: some View {
-        VStack(spacing: 16) {
-            ProgressView()
-                .scaleEffect(1.2)
-            
-            Text("Loading sample data...")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-        }
-        .frame(maxWidth: .infinity, maxHeight: .infinity)
-    }
-    
-    private var contentView: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            Text("Sample Items")
-                .font(.title2)
-                .fontWeight(.semibold)
-            
-            if viewModel.items.isEmpty {
-                emptyStateView
-            } else {
-                itemsListView
-            }
-        }
-    }
-    
-    private var emptyStateView: some View {
-        VStack(spacing: 12) {
-            Image(systemName: "tray")
-                .font(.system(size: 48))
-                .foregroundColor(.secondary)
-            
-            Text("No items available")
-                .font(.headline)
-                .foregroundColor(.secondary)
-            
-            Text("Tap the refresh button to load sample data")
-                .font(.subheadline)
-                .foregroundColor(.secondary)
-                .multilineTextAlignment(.center)
-        }
-        .frame(maxWidth: .infinity)
-        .padding(.vertical, 40)
-    }
-    
-    private var itemsListView: some View {
-        LazyVStack(spacing: 12) {
-            ForEach(viewModel.items) { item in
-                SampleItemRow(item: item) {
-                    if let index = viewModel.items.firstIndex(where: { $0.id == item.id }) {
-                        viewModel.removeItem(at: index)
+            content
+                .navigationTitle("Sample Feature")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .navigationBarTrailing) {
+                        Button(action: {
+                            viewModel.fetchItems()
+                        }) {
+                            Image(systemName: "arrow.clockwise")
+                        }
                     }
                 }
+        }
+    }
+    
+    // MARK: - Private Computed Properties
+    @ViewBuilder
+    private var content: some View {
+        if viewModel.isLoading {
+            ProgressView("Loading Sample Items...")
+        } else if let errorMessage = viewModel.errorMessage {
+            VStack {
+                Text("Error: \(errorMessage)")
+                    .foregroundColor(.red)
+                Button("Retry") {
+                    viewModel.fetchItems()
+                }
+            }
+        } else if viewModel.items.isEmpty {
+            Text("No sample items found.")
+                .foregroundColor(.secondary)
+        } else {
+            List(viewModel.items) { item in
+                SampleItemRow(item: item)
             }
         }
     }
+    
 }
 
 // MARK: - Sample Item Row
 struct SampleItemRow: View {
     let item: SampleItem
-    let onDelete: () -> Void
-    
+
     var body: some View {
-        HStack {
-            VStack(alignment: .leading, spacing: 4) {
-                Text(item.title)
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                
-                Text(item.description)
-                    .font(.subheadline)
-                    .foregroundColor(.secondary)
-                
-                Text(item.timestamp, style: .relative)
-                    .font(.caption)
-                    .foregroundColor(.secondary)
-            }
-            
-            Spacer()
-            
-            Button(action: onDelete) {
-                Image(systemName: "trash")
-                    .foregroundColor(.red)
-            }
-            .buttonStyle(PlainButtonStyle())
+        VStack(alignment: .leading, spacing: 5) {
+            Text(item.name)
+                .font(.headline)
+            Text(item.description)
+                .font(.subheadline)
+                .foregroundColor(.secondary)
+            Text("Value: \(item.value)")
+                .font(.caption)
+                .foregroundColor(.tertiary)
         }
-        .padding()
-        .background(Color(.systemGray6))
-        .cornerRadius(12)
+        .padding(.vertical, 5)
     }
 }
 
