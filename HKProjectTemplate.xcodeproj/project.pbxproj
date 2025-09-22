@@ -220,41 +220,9 @@
 			path = Components;
 			sourceTree = "<group>";
 		};
-		F8C96F152E809373005B8378 /* Colors */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Colors;
-			sourceTree = "<group>";
-		};
-		F8C96F172E809373005B8378 /* Fonts */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Fonts;
-			sourceTree = "<group>";
-		};
-		F8C96F192E809373005B8378 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Layout;
-			sourceTree = "<group>";
-		};
-		F8C96F1B2E809373005B8378 /* Strings */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Strings;
-			sourceTree = "<group>";
-		};
 		F8C96F1C2E809373005B8378 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
-				F8C96F152E809373005B8378 /* Colors */,
-				F8C96F172E809373005B8378 /* Fonts */,
-				F8C96F192E809373005B8378 /* Layout */,
-				F8C96F1B2E809373005B8378 /* Strings */,
 			);
 			path = Constants;
 			sourceTree = "<group>";

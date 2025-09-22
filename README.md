@@ -7,17 +7,18 @@ A comprehensive iOS project template built with SwiftUI, following modern iOS de
 - **SwiftUI Interface** - Modern, declarative UI framework
 - **iOS 16+ Support** - Latest iOS features and APIs
 - **Clean Architecture** - Organized, maintainable code structure
-- **Quality Tools** - SwiftLint, SwiftFormat, and Periphery integration
-- **Automation Scripts** - Project setup and renaming automation
+- **Ultra-Strict SwiftLint** - Comprehensive code quality enforcement
 - **Testing Ready** - Comprehensive unit and UI testing with mock services
-- **Deployment Ready** - Fastlane and CI/CD integration
+- **Firebase Ready** - Pre-configured structure for Firebase integration
+- **iPhone Only** - Optimized for iPhone portrait orientation
 
 ## Quick Start
 
 1. **Clone or Download** this template
-2. **Run Setup Script**: `./Scripts/setup.sh`
-3. **Open in Xcode**: `HKProjectTemplate.xcodeproj`
-4. **Build and Run** your project
+2. **Open in Xcode**: `HKProjectTemplate.xcodeproj`
+3. **Rename Project** - Follow the manual setup guide below
+4. **Configure** - Update bundle identifier and team settings
+5. **Build and Run** your project
 
 ## Project Structure
 
@@ -72,9 +73,89 @@ xcodebuild test -project HKProjectTemplate.xcodeproj -scheme HKProjectTemplate -
 - **Async Testing** - Proper handling of async operations
 - **UI Testing** - Accessibility-focused UI test automation
 
-## Getting Started
+## Manual Setup Guide
 
-See [Documentation/Setup.md](Documentation/Setup.md) for detailed setup instructions.
+### 1. Project Renaming
+
+1. **Open Xcode Project**
+   - Open `HKProjectTemplate.xcodeproj` in Xcode
+
+2. **Rename the Project**
+   - Select the project in the navigator
+   - Press Enter or click on the project name
+   - Type your new project name (e.g., "MyApp")
+
+3. **Update Bundle Identifier**
+   - Select your target
+   - Go to "Signing & Capabilities"
+   - Update the bundle identifier (e.g., "com.yourcompany.myapp")
+
+4. **Rename Source Files**
+   - Rename `HKProjectTemplateApp.swift` to `{YourAppName}App.swift`
+   - Update the struct name inside the file
+   - Update any references in other files
+
+### 2. Git Setup
+
+```bash
+# Initialize Git repository
+git init
+
+# Add remote origin
+git remote add origin https://github.com/yourusername/your-repo.git
+
+# Add all files
+git add .
+
+# Initial commit
+git commit -m "Initial commit from HKProjectTemplate"
+```
+
+### 3. Firebase Configuration (Optional)
+
+1. **Download GoogleService-Info.plist**
+   - From your Firebase project console
+   - Download the configuration file
+
+2. **Add to Xcode Project**
+   - Drag `GoogleService-Info.plist` into `SupportingFiles/` folder
+   - Make sure it's added to the target
+
+3. **Update Firebase SDK**
+   - Add Firebase dependencies via Swift Package Manager
+   - Configure Firebase in your app delegate
+
+### 4. Development Team Setup
+
+1. **Select Development Team**
+   - Go to "Signing & Capabilities"
+   - Select your development team
+   - Ensure automatic signing is enabled
+
+2. **Update Provisioning Profile**
+   - Xcode will automatically manage provisioning profiles
+   - Ensure the bundle identifier matches your Apple Developer account
+
+### 5. Code Quality
+
+The project includes ultra-strict SwiftLint configuration:
+- **Line Length**: 80 characters max
+- **Function Length**: 10 lines max
+- **Type Length**: 100 lines max
+- **Explicit Access Control**: Required for all declarations
+- **SwiftUI Best Practices**: Enforced throughout
+
+### 6. Testing
+
+The project includes comprehensive testing:
+- **Unit Tests**: Business logic and ViewModels
+- **UI Tests**: User interface and flows
+- **Test Utilities**: Mock services and helpers
+
+Run tests with:
+```bash
+xcodebuild test -project YourAppName.xcodeproj -scheme YourAppName
+```
 
 ## License
 
