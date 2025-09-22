@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		A1234567890123456789012C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012D /* ContentView.swift */; };
 		A1234567890123456789012E /* HKProjectTemplateApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789012F /* HKProjectTemplateApp.swift */; };
-		A1234567890123456789013A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013B /* AppDelegate.swift */; };
-		A1234567890123456789013C /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = A1234567890123456789013D /* AppEnvironment.swift */; };
 		F80CD01D2E814D29009F51A0 /* UnitTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80CD01B2E814D29009F51A0 /* UnitTests.swift */; };
 		F80CD0212E814D2D009F51A0 /* UITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80CD01E2E814D2D009F51A0 /* UITests.swift */; };
 		F80CD0222E814D2D009F51A0 /* UITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F80CD01F2E814D2D009F51A0 /* UITestsLaunchTests.swift */; };
@@ -39,8 +37,6 @@
 		A1234567890123456789012D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		A1234567890123456789012F /* HKProjectTemplateApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HKProjectTemplateApp.swift; sourceTree = "<group>"; };
 		A1234567890123456789012G /* HKProjectTemplate.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HKProjectTemplate.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		A1234567890123456789013B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		A1234567890123456789013D /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		F80CD0022E814D0B009F51A0 /* UnitTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UnitTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80CD00F2E814D18009F51A0 /* UITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = UITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F80CD01B2E814D29009F51A0 /* UnitTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitTests.swift; sourceTree = "<group>"; };
@@ -80,8 +76,6 @@
 			isa = PBXGroup;
 			children = (
 				A1234567890123456789012F /* HKProjectTemplateApp.swift */,
-				A1234567890123456789013B /* AppDelegate.swift */,
-				A1234567890123456789013D /* AppEnvironment.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -91,6 +85,7 @@
 			children = (
 				A1234567890123456789013E /* App */,
 				F8C96F132E809373005B8378 /* Components */,
+				F8A5C9B82E81739F00EEE4E4 /* DesignSystem */,
 				F8C96F1C2E809373005B8378 /* Constants */,
 				F8C96F252E809373005B8378 /* Core */,
 				F8C96F2C2E809373005B8378 /* Features */,
@@ -144,6 +139,37 @@
 				F80CD01F2E814D2D009F51A0 /* UITestsLaunchTests.swift */,
 			);
 			path = UITests;
+			sourceTree = "<group>";
+		};
+		F8A5C9B32E81739F00EEE4E4 /* Styles */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Styles;
+			sourceTree = "<group>";
+		};
+		F8A5C9B52E81739F00EEE4E4 /* ViewModifiers */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ViewModifiers;
+			sourceTree = "<group>";
+		};
+		F8A5C9B72E81739F00EEE4E4 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		F8A5C9B82E81739F00EEE4E4 /* DesignSystem */ = {
+			isa = PBXGroup;
+			children = (
+				F8A5C9B32E81739F00EEE4E4 /* Styles */,
+				F8A5C9B52E81739F00EEE4E4 /* ViewModifiers */,
+				F8A5C9B72E81739F00EEE4E4 /* Views */,
+			);
+			path = DesignSystem;
 			sourceTree = "<group>";
 		};
 		F8C96F062E808E7E005B8378 /* Preview Content */ = {
@@ -522,8 +548,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A1234567890123456789012E /* HKProjectTemplateApp.swift in Sources */,
-				A1234567890123456789013A /* AppDelegate.swift in Sources */,
-				A1234567890123456789013C /* AppEnvironment.swift in Sources */,
 				A1234567890123456789012C /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

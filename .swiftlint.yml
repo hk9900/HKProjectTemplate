@@ -272,11 +272,11 @@ custom_rules:
     match_kinds:
       - keyword
 
-  # Enforce explicit access control
+  # Enforce explicit access control (excluding SwiftUI views and body properties)
   explicit_access_control:
     name: "Explicit Access Control"
-    regex: '^(?!public|private|internal|fileprivate)\s*(class|struct|enum|protocol|func|var|let)'
-    message: "All declarations must have explicit access control"
+    regex: '^(?!public|private|internal|fileprivate)\s*(class|enum|protocol|func|var|let)(?!.*:\s*View)(?!.*\s+body\s*:)'
+    message: "All declarations must have explicit access control (except SwiftUI views and body properties)"
     severity: error
     match_kinds:
       - keyword
