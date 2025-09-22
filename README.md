@@ -28,16 +28,16 @@ HKProjectTemplate/
 │   ├── App/                    # App entry point and environment
 │   ├── Core/                   # Core business logic and services
 │   ├── Features/               # Feature modules
-│   ├── Components/             # Reusable UI components
+│   ├── DesignSystem/           # Design system and UI components
+│   │   ├── Styles/             # Colors, typography, spacing
+│   │   ├── ViewModifiers/      # Custom view modifiers
+│   │   └── Views/              # Reusable UI components
 │   ├── Constants/              # Centralized constants
 │   └── Resources/              # Assets and configuration
 ├── Tests/                      # Comprehensive testing suite
 │   ├── UnitTests/              # Unit tests for business logic
 │   ├── UITests/                # UI tests for user flows
 │   └── TestUtilities/          # Test helpers and mocks
-├── Scripts/                    # Automation scripts
-├── fastlane/                   # Deployment automation
-├── .github/                    # CI/CD workflows
 └── Documentation/              # Project documentation
 ```
 

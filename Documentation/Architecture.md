@@ -32,11 +32,10 @@ HKProjectTemplate/
 │   └── Sample/                 # Sample feature implementation
 │       ├── ViewModels/         # Feature-specific ViewModels
 │       └── Views/              # Feature-specific Views
-├── Components/                 # Reusable UI components
-├── DesignSystem/              # Design system implementation
+├── DesignSystem/              # Design system and UI components
 │   ├── Styles/                # Colors, typography, spacing
 │   ├── ViewModifiers/         # Custom view modifiers
-│   └── Views/                 # Base UI components
+│   └── Views/                 # Reusable UI components
 ├── Constants/                 # App constants and configuration
 ├── Resources/                 # Assets and configuration files
 │   ├── Config/                # Configuration files
@@ -70,20 +69,15 @@ HKProjectTemplate/
   - Feature-specific business logic
   - Feature-specific data models
 
-### Components Layer
-- **Purpose**: Reusable UI components
-- **Responsibilities**:
-  - Custom UI components
-  - Reusable view elements
-  - Component-specific logic
-
 ### DesignSystem Layer
-- **Purpose**: Design system implementation
+- **Purpose**: Design system and reusable UI components
 - **Responsibilities**:
   - Color schemes and themes
   - Typography definitions
   - Spacing and layout constants
   - Custom view modifiers
+  - Reusable UI components
+  - Component-specific logic
 
 ## Design Patterns
 

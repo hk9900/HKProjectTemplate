@@ -64,7 +64,7 @@ playground.xcworkspace
 # Add this line if you want to avoid checking in source code from Carthage dependencies.
 # Carthage/Checkouts
 
-Carthage/Build/
+Carthage/Build
 
 # Accio dependency management
 Dependencies/
@@ -89,150 +89,52 @@ fastlane/test_output
 
 iOSInjectionProject/
 
+# Backup files
+*.backup
+*.orig
+*.tmp
+
 # macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Thumbnails
+._*
+
+# Files that might appear in the root of a volume
+.DocumentRevisions-V100
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+.VolumeIcon.icns
+.com.apple.timemachine.donotpresent
+
+# Directories potentially created on remote AFP share
+.AppleDB
+.AppleDesktop
+Network Trash Folder
+Temporary Items
+.apdisk
 
 # IDEs
 .vscode/
 .idea/
 
 # Temporary files
-*.tmp
-*.temp
+*.swp
+*.swo
 *~
 
 # Logs
 *.log
 
-# Environment variables
-.env
-.env.local
-.env.*.local
-
 # Firebase
 GoogleService-Info.plist
 GoogleService-Info-*.plist
 
-# API Keys and Secrets
-*Secret*.plist
-*Keys*.plist
-config.plist
-
-# Test results
-TestResults/
-*.xcresult/
-
-# Coverage reports
-*.gcov
-*.gcno
-*.gcda
-coverage/
-
-# Profiling data
-*.profraw
-
-# Swift Package Manager
-.swiftpm/
-
-# App Store Connect API Key
-AuthKey_*.p8
-
-# Provisioning profiles
-*.mobileprovision
-*.provisionprofile
-
-# Certificates
-*.p12
-*.cer
-*.certSigningRequest
-
-# Archive
-*.xcarchive
-
-# Simulator logs
-~/Library/Logs/CoreSimulator/
-
-# Xcode Cloud
-.xcode-cloud/
-
-# Local configuration files
-LocalConfiguration.plist
-LocalConfig.swift
-
-# Backup files
-*.backup
-*.bak
-
-# Temporary build files
-*.swp
-*.swo
-
-# Documentation build
-docs/_build/
-
-# Node.js (if using for scripts)
-node_modules/
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-
-# Ruby (if using for scripts)
-vendor/
-Gemfile.lock
-
-# Python (if using for scripts)
-__pycache__/
-*.py[cod]
-*$py.class
-*.so
-.Python
-env/
-venv/
-ENV/
-
-# JetBrains IDEs
-.idea/
-*.iml
-*.ipr
-*.iws
-
-# Visual Studio Code
-.vscode/
-!.vscode/settings.json
-!.vscode/tasks.json
-!.vscode/launch.json
-!.vscode/extensions.json
-
-# Sublime Text
-*.sublime-project
-*.sublime-workspace
-
-# Vim
-*.swp
-*.swo
-*~
-
-# Emacs
-*~
-\#*\#
-/.emacs.desktop
-/.emacs.desktop.lock
-*.elc
-auto-save-list
-tramp
-.\#*
-
-# OS generated files
-.DS_Store
-.DS_Store?
-._*
-.Spotlight-V100
-.Trashes
-ehthumbs.db
-Thumbs.db
-
-# Project specific
-# Add any project-specific files or directories to ignore here
-
-# Planning and documentation
-Plan/
+# Secrets and API keys
+Secrets.plist
+APIKeys.plist
+Config.plist
