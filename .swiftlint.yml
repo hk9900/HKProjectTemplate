@@ -1,0 +1,463 @@
+# SwiftLint Configuration for HKProjectTemplate
+# ULTRA-STRICT MODE with SwiftUI considerations
+
+# Paths to include/exclude
+included:
+  - HKProjectTemplate
+  - Tests
+
+excluded:
+  - HKProjectTemplate.xcodeproj
+  - DerivedData
+  - .build
+  - Pods
+  - Carthage
+  - .swiftpm
+  - Preview Content
+
+# Rules to disable (ABSOLUTE MINIMUM exceptions)
+disabled_rules:
+  - todo # We use TODO comments intentionally in templates
+
+# Rules to enable (ALL POSSIBLE RULES)
+opt_in_rules:
+  - array_init
+  - attributes
+  - closure_body_length
+  - closure_end_indentation
+  - closure_spacing
+  - collection_alignment
+  - contains_over_filter_count
+  - contains_over_filter_is_empty
+  - contains_over_first_not_nil
+  - contains_over_range_nil_comparison
+  - discouraged_object_literal
+  - empty_collection_literal
+  - empty_count
+  - empty_string
+  - enum_case_associated_values_count
+  - explicit_init
+  - extension_access_modifier
+  - fallthrough
+  - fatal_error_message
+  - file_header
+  - first_where
+  - force_unwrapping
+  - function_default_parameter_at_end
+  - identical_operands
+  - implicit_return
+  - joined_default_parameter
+  - last_where
+  - legacy_random
+  - literal_expression_end_indentation
+  - lower_acl_than_parent
+  - modifier_order
+  - nimble_operator
+  - nslocalizedstring_key
+  - number_separator
+  - object_literal
+  - operator_usage_whitespace
+  - overridden_super_call
+  - override_in_extension
+  - pattern_matching_keywords
+  - prefer_self_type_over_type_of_self
+  - prefer_zero_over_explicit_init
+  - prefixed_toplevel_constant
+  - prohibited_interface_builder
+  - prohibited_super_call
+  - quick_discouraged_call
+  - quick_discouraged_focused_test
+  - quick_discouraged_pending_test
+  - reduce_into
+  - redundant_nil_coalescing
+  - redundant_type_annotation
+  - required_enum_case
+  - single_test_class
+  - sorted_first_last
+  - sorted_imports
+  - static_operator
+  - strong_iboutlet
+  - switch_case_on_newline
+  - toggle_bool
+  - unavailable_function
+  - unneeded_parentheses_in_closure_argument
+  - untyped_error_in_catch
+  - vertical_parameter_alignment_on_call
+  - vertical_whitespace_closing_braces
+  - vertical_whitespace_opening_braces
+  - weak_delegate
+  - xct_specific_matcher
+  - yoda_condition
+
+# Analyzer rules (ALL POSSIBLE)
+analyzer_rules:
+  - explicit_self
+  - unused_declaration
+  - unused_import
+
+# ULTRA-STRICT Configuration - MAXIMUM POSSIBLE ENFORCEMENT
+line_length:
+  warning: 60
+  error: 80
+  ignores_urls: true
+  ignores_function_declarations: false
+  ignores_comments: false
+
+function_body_length:
+  warning: 5
+  error: 10
+
+type_body_length:
+  warning: 50
+  error: 100
+
+file_length:
+  warning: 150
+  error: 300
+
+cyclomatic_complexity:
+  warning: 3
+  error: 5
+
+closure_body_length:
+  warning: 5
+  error: 10
+
+function_parameter_count:
+  warning: 1
+  error: 2
+
+# ULTRA-STRICT Type name - EXTREME limits
+type_name:
+  min_length: 5
+  max_length: 25
+
+# ULTRA-STRICT Identifier name - EXTREME limits
+identifier_name:
+  min_length: 4
+  max_length: 25
+  excluded:
+    - id
+    - url
+    - api
+    - ui
+
+# ULTRA-STRICT Large tuple - EXTREME limits
+large_tuple:
+  warning: 1
+  error: 2
+
+# ULTRA-STRICT Nesting - EXTREME limits
+nesting:
+  type_level:
+    warning: 1
+    error: 2
+
+# ULTRA-STRICT SwiftUI-specific configurations
+closure_spacing:
+  severity: error
+
+closure_end_indentation:
+  severity: error
+
+multiple_closures_with_trailing_closure:
+  severity: error
+
+# ALL RULES SET TO ERROR LEVEL
+force_unwrapping:
+  severity: error
+
+force_try:
+  severity: error
+
+implicit_return:
+  severity: error
+
+trailing_whitespace:
+  ignores_empty_lines: false
+  ignores_comments: false
+  severity: error
+
+vertical_whitespace:
+  max_empty_lines: 0
+  severity: error
+
+empty_count:
+  severity: error
+
+empty_string:
+  severity: error
+
+force_cast:
+  severity: error
+
+operator_usage_whitespace:
+  severity: error
+
+return_arrow_whitespace:
+  severity: error
+
+sorted_imports:
+  severity: error
+
+statement_position:
+  severity: error
+
+switch_case_alignment:
+  severity: error
+
+toggle_bool:
+  severity: error
+
+unused_closure_parameter:
+  severity: error
+
+valid_ibinspectable:
+  severity: error
+
+vertical_parameter_alignment_on_call:
+  severity: error
+
+weak_delegate:
+  severity: error
+
+xct_specific_matcher:
+  severity: error
+
+# ULTRA-STRICT Custom rules
+custom_rules:
+  # Enforce explicit self in closures
+  explicit_self_in_closure:
+    name: "Explicit Self in Closure"
+    regex: '\[(weak|unowned)\s+self\]'
+    message: "Use explicit self in closures for clarity"
+    severity: error
+    match_kinds:
+      - comment
+
+  # Enforce MARK comments for ALL files
+  mark_comments_required:
+    name: "MARK Comments Required"
+    regex: '^// MARK: - .+$'
+    message: "Use MARK comments to organize code sections"
+    severity: error
+    match_kinds:
+      - comment
+
+  # Enforce documentation for ALL public APIs
+  public_api_documentation:
+    name: "Public API Documentation"
+    regex: '^public\s+(func|var|let|class|struct|enum|protocol)'
+    message: "Public APIs must be documented with /// comments"
+    severity: error
+    match_kinds:
+      - keyword
+      - identifier
+
+  # Enforce explicit return types
+  explicit_return_types:
+    name: "Explicit Return Types"
+    regex: 'func\s+\w+\([^)]*\)\s*->\s*Void'
+    message: "Use explicit return types instead of Void"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce guard statements over if-let
+  guard_over_if_let:
+    name: "Guard Over If-Let"
+    regex: 'if\s+let\s+\w+\s*='
+    message: "Use guard let instead of if let for early returns"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce explicit access control
+  explicit_access_control:
+    name: "Explicit Access Control"
+    regex: '^(?!public|private|internal|fileprivate)\s*(class|struct|enum|protocol|func|var|let)'
+    message: "All declarations must have explicit access control"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce single responsibility
+  single_responsibility:
+    name: "Single Responsibility"
+    regex: 'class\s+\w+.*:\s*.*,.*'
+    message: "Classes should have single responsibility - avoid multiple inheritance"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce protocol naming
+  protocol_naming:
+    name: "Protocol Naming"
+    regex: 'protocol\s+[A-Z][a-z]*[^A-Z]'
+    message: "Protocols should end with 'Protocol' or 'Type'"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce enum case naming
+  enum_case_naming:
+    name: "Enum Case Naming"
+    regex: 'case\s+[a-z]'
+    message: "Enum cases should be camelCase"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce explicit self
+  explicit_self_required:
+    name: "Explicit Self Required"
+    regex: 'func\s+\w+\([^)]*\)\s*\{[^}]*[^.]\w+\([^}]*\}'
+    message: "Use explicit self for method calls"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce final classes
+  final_classes:
+    name: "Final Classes Required"
+    regex: '^class\s+\w+(?!.*final)'
+    message: "All classes should be marked as final unless designed for inheritance"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # ULTRA-STRICT SWIFTUI RULES
+  # Enforce @StateObject over @ObservedObject for owned objects
+  swiftui_stateobject_over_observed:
+    name: "SwiftUI StateObject Over ObservedObject"
+    regex: '@ObservedObject\s+var\s+\w+.*=.*\(\)'
+    message: "Use @StateObject for owned ObservableObjects, @ObservedObject for external ones"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce @MainActor for ViewModels
+  swiftui_mainactor_viewmodels:
+    name: "SwiftUI MainActor ViewModels"
+    regex: 'class\s+\w*ViewModel.*:\s*ObservableObject(?!.*@MainActor)'
+    message: "ViewModels must be marked with @MainActor"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce proper SwiftUI View structure
+  swiftui_view_structure:
+    name: "SwiftUI View Structure"
+    regex: 'struct\s+\w+.*:\s*View\s*\{[^}]*var\s+body:\s*some\s+View\s*\{[^}]*\}'
+    message: "SwiftUI Views must have proper structure with body property"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce @ViewBuilder for complex computed properties
+  swiftui_viewbuilder:
+    name: "SwiftUI ViewBuilder"
+    regex: 'var\s+\w+.*:\s*some\s+View\s*\{[^}]*\}'
+    message: "Complex computed properties returning some View must use @ViewBuilder"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce proper SwiftUI modifiers order
+  swiftui_modifier_order:
+    name: "SwiftUI Modifier Order"
+    regex: '\.(padding|background|foregroundColor|font)\([^)]*\)\.(padding|background|foregroundColor|font)'
+    message: "SwiftUI modifiers must be in logical order: layout -> appearance -> behavior"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce accessibility identifiers
+  swiftui_accessibility:
+    name: "SwiftUI Accessibility"
+    regex: '\.(button|text|image|list|navigationView)\([^)]*\)(?!.*\.accessibilityIdentifier)'
+    message: "All interactive SwiftUI elements must have accessibility identifiers"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce proper SwiftUI navigation
+  swiftui_navigation:
+    name: "SwiftUI Navigation"
+    regex: 'NavigationLink\([^)]*\)(?!.*\.navigationBarTitleDisplayMode)'
+    message: "NavigationLink must be properly configured with navigation modifiers"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce SwiftUI preview structure
+  swiftui_preview:
+    name: "SwiftUI Preview"
+    regex: '#Preview\s*\{[^}]*\}'
+    message: "Use #Preview instead of #PreviewProvider for SwiftUI previews"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce proper SwiftUI state management
+  swiftui_state_management:
+    name: "SwiftUI State Management"
+    regex: '@State\s+var\s+\w+.*=.*\(\)(?!.*private)'
+    message: "@State variables must be private"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce SwiftUI environment usage
+  swiftui_environment:
+    name: "SwiftUI Environment"
+    regex: '@Environment\([^)]*\)\s+var\s+\w+(?!.*private)'
+    message: "@Environment variables must be private"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce proper SwiftUI animation
+  swiftui_animation:
+    name: "SwiftUI Animation"
+    regex: '\.animation\([^)]*\)(?!.*\.animation\(\.easeInOut)'
+    message: "Use explicit animation curves instead of default"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce SwiftUI performance best practices
+  swiftui_performance:
+    name: "SwiftUI Performance"
+    regex: 'ForEach\([^)]*\)(?!.*id:)'
+    message: "ForEach must have explicit id parameter for performance"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce proper SwiftUI error handling
+  swiftui_error_handling:
+    name: "SwiftUI Error Handling"
+    regex: '\.alert\([^)]*\)(?!.*isPresented)'
+    message: "Use proper error handling with alert modifiers"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce SwiftUI View naming convention
+  swiftui_view_naming:
+    name: "SwiftUI View Naming"
+    regex: 'struct\s+[A-Z][a-z]*[^V][^i][^e][^w]'
+    message: "SwiftUI Views must end with 'View'"
+    severity: error
+    match_kinds:
+      - keyword
+
+  # Enforce SwiftUI ViewModel naming convention
+  swiftui_viewmodel_naming:
+    name: "SwiftUI ViewModel Naming"
+    regex: 'class\s+[A-Z][a-z]*[^V][^i][^e][^w][^M][^o][^d][^e][^l]'
+    message: "SwiftUI ViewModels must end with 'ViewModel'"
+    severity: error
+    match_kinds:
+      - keyword
